@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Request</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style/style.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <div class="nav">
+            <div class="nondrop">
+                <ul>
+                    <li><a href="/" style="text-decoration: none;">Home</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- main content-->
+        <div class="main-content">
+            <div class="placeholder">
+                <div class="welcome">
+                    <h1><div>Welcome to Prayer</div><span style='font-size:55px;'>&#129330;</span></h1>
+                </div>
+            </div>
+                <div class="row" style="justify-content: space-around; margin-top: 40px;";>
+                    <form method="POST" action="/process_form" class="col-50 p-4 bg-dark text-light justify-content-center" style="border-radius: 15px 15px 15px 15px; width: 1000px; text-align: center;">
+                        <h1>Who are you?</h1>
+                        <div class="form-group">
+                            <label for="user_name">Name:</label>
+                            <input class="spacer" type="text" name="user_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_number">Phone Number: </label>
+                            <input class="spacer_" type="text" name="phone_number">
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">Email:</label>
+                            <input class="spacer" type="text" name="email">
+                        </div>
+                        <h1>What is your prayer?</h1>
+                        <div class="form-group helper">
+                            <label style="font-weight: bold; margin-right: 20px; position: relative; top: -80px;" for="name">Content of your prayer:</label>
+                            <textarea placeholder="Type your request here..." name="content" id="" cols="20"  rows="7" style="resize: none;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-lg">Thank You!</button>
+                        </div>
+                        {% with messages=get_flashed_messages() %}
+                            {% if messages %}
+                                <h1 style="text-decoration: underline;"> ERROR </h1>
+                                <h1 >&#128071 See Below &#128071</h1>
+                                {% for message in messages %}
+                                    <h1>{{message}}</h1>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </form>
+                </div>
+        </div>
+        <!-- close of main content-->
+    </div>
+    <script type="text/javascript" src="{{url_for('static', filename="script/index.js")}}"></script>
+</body>
+</html>
